@@ -1,17 +1,15 @@
 ---
-title: "RepData_PeerAssessment1"
-author: "Melissa Allin"
-date: "8/22/2020"
+title: "Reproducible Research: Peer Assessment 1"
 output: 
-     html_document:
-          keep_md: true
+  html_document:
+    keep_md: true
 ---
 
 
 
-## R Markdown
+In this assignment we were tasked with analyzing activity monitoring data from a personal activity monitoring device to look for activity patterns.  The data consists of 2 months of activity data which was recorded in 5 minute intervals through-out each day.  The data included in the dataset for this assignment are:  steps:  number of steps recorded in each 5 minute interval; date:  date the measurement was recorded; and interval:  numeric identifier for the 5 minute interval in which the measurement was taken.  
 
-In this assignment we were tasked with analyzing activity monitoring data from a personal activity monitoring device to look for activity patterns.  The data consists of 2 months of activity data which was recorded in 5 minute intervals through-out each day.  The data included in the dataset for this assignment are:  steps:  number of steps recorded in each 5 minute interval; date:  date the measurement was recorded; and interval:  numeric identifier for the 5 minute interval in which the measurement was taken.         
+## Loading and preprocessing the data
 
 In the first task of the assignment we are working toward determining the mean total steps taken per day.  We will first load and process the data.  Processing consists of converting the character strings in the date column to dates.        
 
@@ -38,6 +36,8 @@ hist(totsteps,col="blue",main="Histogram of Number of Steps per Day",xlab="Numbe
 
 ![](RepData_PeerAssessment1_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
+## What is mean total number of steps taken per day?
+
 We are then asked to report the mean and median of the total number of steps per day.
 
 
@@ -59,6 +59,8 @@ print(paste("Median =",medsteps))
 ```
 ## [1] "Median = 10395"
 ```
+
+## What is the average daily activity pattern?
 
 We are now asked to determine the daily activity pattern.  This is completed by producing a time-series plot of the number of steps versus the 5-minute interval.
 
@@ -83,6 +85,8 @@ print(paste("Time interval with highest number of steps =",maxint))
 ```
 ## [1] "Time interval with highest number of steps = 835"
 ```
+
+## Imputing missing values
 
 Up until now the dataframe has contained a large number of missing values.  We are now tasked with imputing values into the cells containing NA so that we can analyze the resultant new dataframe and compare the results to those of the first.  We will first calculate the number of cells missing data.
 
@@ -143,6 +147,8 @@ print(paste("Median =",medsteps2))
 ```
 
 We are now asked if the mean and median of the new dataset with imputed values in the missing cells differs from the mean and median of the original dataset.  In fact, they do as can be seen here:  mean of original dataset = 9354, median of original dataset = 10395; mean of new dataset = 10766, median of new dataset = 10766.  As can be seen, by imputing the mean of each interval into that interval's missing data cells, the mean and median now are equal to each other.
+
+## Are there differences in activity patterns between weekdays and weekends?
 
 Lastly, we are asked to analyze the new dataset to determine if there are activity patterns that differ between weekdays and weekend days.  We will first add a column to our dataframe which contains a new factor variable identifying each date as either a "weekday" or a "weekend" day.
 
